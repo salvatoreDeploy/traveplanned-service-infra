@@ -18,6 +18,22 @@
 - Realizar o biuldar: (tsup)
 - Executar o biuld: (node)
 
-# Requisitos:
 
-[] Postgres
+# Orquestração de Container Local:
+
+## Requisitos:
+
+[x] Postgres
+
+
+# CI
+
+## Configuração github Actions:
+
+[] Condicional para haver uma nova CI
+[] JObs
+[] Steps do processos
+
+# Banco de dados Remoto DBAS:
+
+[] Serviço: Supabase

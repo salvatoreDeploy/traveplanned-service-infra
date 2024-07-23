@@ -10,9 +10,15 @@ jobs:
     name: "Build and Push"
     runs-on: "ubuntu-latest"
 
+    # Biuldar imagem com versão usando tag do versionamento
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Build docker Image
         run: docker build -t rickphp/travel-planned-api:latest .
+
+    # Logar no container registry
+
+    #Enviar imagem para o Docker hub

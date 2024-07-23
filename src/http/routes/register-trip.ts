@@ -9,6 +9,8 @@ import {
   formattedEndDate,
   formattedStartDate,
 } from '../../utils/formattedDates'
+import { InvalidTripDatesError } from '../errors/invalid-trip-dates-error'
+import { env } from '../../env/env'
 
 export async function registerTrip(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().post(
@@ -38,11 +40,11 @@ export async function registerTrip(app: FastifyInstance) {
       } = request.body
 
       if (dayjs(starts_at).isBefore(new Date())) {
-        throw new Error('Invalid trip start date.')
+        throw new InvalidTripDatesError('Invalid trip start date.')
       }
 
       if (dayjs(ends_at).isBefore(starts_at)) {
-        throw new Error('Invalid trip end date.')
+        throw new InvalidTripDatesError('Invalid trip end date.')
       }
 
       const trip = await prisma.trip.create({
@@ -73,7 +75,7 @@ export async function registerTrip(app: FastifyInstance) {
       const startFormattedDate = formattedStartDate(starts_at)
       const endFormattedDate = formattedEndDate(ends_at)
 
-      const confirmationLink = `http:localhost:3333/trips/${trip.id}/confirmed`
+      const confirmationLink = `${env.API_BASE_URL}/trips/${trip.id}/confirmed`
 
       const message = await mail.sendMail({
         from: {
