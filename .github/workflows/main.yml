@@ -16,8 +16,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Generate SHA Tag
+        id: generate_sha_tag
+        run: |
+          SHA=$(echo $GITHUB_SHA | head -c7)
+          echo "sha=$SHA" >> $GITHUB_OUTPUT
+
       - name: Build docker Image
-        run: docker build -t rickphp/travel-planned-api:latest .
+        run: docker build -t rickphp/travel-planned-api:${{ steps.generate_sha_tag.outputs.sha }} .
 
     # Logar no container registry
 
