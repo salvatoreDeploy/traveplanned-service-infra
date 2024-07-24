@@ -1,21 +1,21 @@
 # Conhecer dependencias da Aplicação: Travel Planned
 
-- Tecnologia
-- Versão
+- Tecnologia: Node.js
+- Versão: v1.0.0
 - Variaveis de ambiente
 - Porta da aplicação
 
 # Fluxo da aplicação:
 
-## Desenvolvimento:
+## Escopo - Desenvolvimento:
 
 - Instalar dependencias
 - Executar aplicação em desenvolvimento : (tsx)
 
-## Produção:
+## Escopo - Produção:
 
 - Instalar dependencias
-- Realizar o biuldar: (tsup)
+- Realizar o biuld: (tsup)
 - Executar o biuld: (node)
 
 
@@ -25,14 +25,25 @@
 
 [x] Postgres
 
-
 # CI
 
 ## Configuração github Actions:
 
-[] Condicional para haver uma nova CI
-[] JObs
-[] Steps do processos
+[x] Condicional para haver uma nova CI
+[x] Jobs
+[x] Steps do processos
+
+# Kubernets
+
+
+
+## Executar aplicação no Kubernets
+
+## Arquitetura cluster Kubernets
+
+# Helm
+
+## Criar cluster K8s
 
 # Banco de dados Remoto DBAS:
 

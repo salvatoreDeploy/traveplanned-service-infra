@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+
+metadata:
+  name: travel-panned-service-api
+  labels:
+    app: travell-planned-api
+
+spec:
+  selector:
+    app: travell-planned-api
+  type: ClusterIP  
+  ports: 
+  - name: travel-panned-service-api
+    port: 80
+    targetPort: 3333
+    protocol: TCP

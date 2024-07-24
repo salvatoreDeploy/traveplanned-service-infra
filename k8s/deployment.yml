@@ -1,0 +1,71 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: travel-planned-deployment
+  labels:
+    app: travell-planned-api
+
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: travell-planned-api
+  template:
+    metadata:
+      labels:
+        app: travell-planned-api
+    spec:
+      containers:
+        - name: api-travell-planned
+          image: rickphp/travel-planned-api:1d6fbd9
+          env:
+          - name: API_BASE_URL
+            valueFrom:
+              secretKeyRef:
+                name: db-connection
+                key: api_base_url
+          - name: WEB_BASE_URL
+            valueFrom:
+              secretKeyRef:
+                name: db-connection
+                key: web_base_url      
+          - name: DATABASE_URL
+            valueFrom:
+              secretKeyRef:
+                name: db-connection
+                key: database_url
+          - name: DIRECT_URL
+            valueFrom:
+              secretKeyRef:
+                name: db-connection
+                key: direct_url
+          - name: POSTGRES_USER
+            valueFrom:
+              secretKeyRef:
+                name: db-connection
+                key: db_user
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: db-connection
+                key: db_password
+          - name: POSTGRES_DB
+            valueFrom:
+              secretKeyRef:
+                name: db-connection
+                key: db_name
+          - name: POSTGRES_PORT
+            valueFrom:
+              secretKeyRef:
+                name: db-connection
+                key: db_port
+          ports:
+            - containerPort: 3333
+          resources:
+            requests:
+              cpu: 200m
+              memory: 256Mi
+            limits:
+              cpu: 300m
+              memory: 256Mi  
