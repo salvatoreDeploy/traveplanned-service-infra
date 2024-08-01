@@ -14,13 +14,13 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node 
+      - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
+          cache: "npm"
       # - run: npm ci
-      # - run: npm test  
+      # - run: npm test
 
       # Biuldar imagem com versão usando tag do versionamento
 
@@ -48,6 +48,18 @@ jobs:
           tags: |
             rickphp/travel-planned-api:${{ steps.generate_sha_tag.outputs.sha }}
             rickphp/travel-planned-api:latest
+
+      - name: Update image helm
+        uses: fjogeleit/yaml-update-action@main
+        with:
+          branch: release
+          targetBranch: main
+          createPR: true
+          valueFile: "deploy/values.yaml"
+          propertyPath: "image.tag"
+          value: ${{ steps.generate_sha_tag.outputs.sha }}
+          commitChange: true
+          message: "[skip ci] Update tag in values helm"
 
       # - name: Build docker Image
       #   run: docker build -t rickphp/travel-planned-api:${{ steps.generate_sha_tag.outputs.sha }} .
