@@ -18,7 +18,6 @@
 - Realizar o biuld: (tsup)
 - Executar o biuld: (node)
 
-
 # Orquestração de Container Local:
 
 ## Requisitos:
@@ -35,16 +34,33 @@
 
 # Kubernets
 
-
-
 ## Executar aplicação no Kubernets
+
+[] Criar um cluster Kubernets
+[] Setar quantos servers(nós) tera
+[] Criar um namespace
 
 ## Arquitetura cluster Kubernets
 
-# Helm
+[] Cluster EKS
+[] VPC
 
 ## Criar cluster K8s
 
+[] Criar arquivos de manifestos neste caso (deployment, secret e o service)
+[] Criar tudo usando esses manifestos
+
+# Helm
+
+[] Criar um empacotamento helm e um CLuster de deploy
+
+# CD
+
+## Argo CD
+
+[] Entrega continua atraves da mudança da tag
+[] Usar gitOps
+
 # Banco de dados Remoto DBAS:
 
-[] Serviço: Supabase
+[x] Serviço: Supabase

@@ -9,9 +9,9 @@ metadata:
 spec:
   selector:
     app: travell-planned-api
-  type: ClusterIP  
-  ports: 
-  - name: travel-panned-service-api
-    port: 80
-    targetPort: 3333
-    protocol: TCP
+  type: ClusterIP
+  ports:
+    - name: travel-panned-service-api
+      port: 80
+      targetPort: 3333
+      protocol: TCP
